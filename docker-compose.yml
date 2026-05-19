@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - api-gateway
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./api-gateway:/app
+      - /app/node_modules
+    depends_on:
+      - auth-service
+      - ai-service
+
+  auth-service:
+    build: ./auth-service
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./auth-service:/app
+      - /app/node_modules
+
+  ai-service:
+    build: ./ai-service
+    ports:
+      - "5004:5004"
+    volumes:
+      - ./ai-service:/app

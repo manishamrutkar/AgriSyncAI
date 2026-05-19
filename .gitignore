@@ -2,7 +2,6 @@ node_modules
 .env
 dist
 build
-coverage
-*.log
-__pycache__
 venv
+__pycache__
+coverage

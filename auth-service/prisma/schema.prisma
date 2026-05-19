@@ -8,10 +8,23 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  role      String   @default("farmer")
-  createdAt DateTime @default(now())
+  id           Int           @id @default(autoincrement())
+  name         String
+  email        String        @unique
+  password     String
+  role         String        @default("farmer")
+  createdAt    DateTime      @default(now())
+
+  cropHistory  CropHistory[]
+}
+
+model CropHistory {
+  id          Int      @id @default(autoincrement())
+  crop        String
+  confidence  String
+  profit      String
+  createdAt   DateTime @default(now())
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
 }

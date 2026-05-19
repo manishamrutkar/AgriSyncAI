@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: agrisync-api-gateway
+    env: docker
+    plan: free
+    rootDir: api-gateway
+
+  - type: web
+    name: agrisync-auth-service
+    env: docker
+    plan: free
+    rootDir: auth-service
+
+  - type: web
+    name: agrisync-ai-service
+    env: docker
+    plan: free
+    rootDir: ai-service

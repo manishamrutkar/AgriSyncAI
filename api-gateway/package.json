@@ -1,7 +1,6 @@
 {
   "name": "api-gateway",
   "version": "1.0.0",
-  "type": "module",
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
@@ -9,9 +8,10 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^17.2.0",
     "express": "^5.1.0",
-    "http-proxy-middleware": "^3.0.5"
+    "helmet": "^8.1.0",
+    "http-proxy-middleware": "^3.0.5",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

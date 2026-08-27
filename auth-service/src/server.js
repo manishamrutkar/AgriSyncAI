@@ -1,7 +1,5 @@
 import express from "express";
-
 import cors from "cors";
-
 import dotenv from "dotenv";
 
 import authRoutes from "./routes/authRoutes.js";
@@ -14,6 +12,13 @@ app.use(cors());
 
 app.use(express.json());
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "UP",
+    service: "AgriSync Auth Service",
+  });
+});
+
 app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
@@ -22,11 +27,8 @@ app.get("/", (req, res) => {
   });
 });
 
-const PORT =
-  process.env.PORT || 5001;
+const PORT = process.env.PORT || 5001;
 
-app.listen(PORT, () => {
-  console.log(
-    `Auth Service running on port ${PORT}`
-  );
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Auth Service running on port ${PORT}`);
 });
